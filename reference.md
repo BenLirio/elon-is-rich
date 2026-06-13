@@ -3,8 +3,33 @@
 All figures as of June 12, 2026.
 
 ## Net worth
-- **~$1.05 trillion** (conservative; intraday calcs ran $1.05–1.2T). Crossed $1T on **June 11, 2026** when the SpaceX IPO priced at $135/share; SPCX opened on Nasdaq June 12 at $150, closed $161.11. Fluctuates with SPCX/TSLA.
-  - [CNBC](https://www.cnbc.com/2026/06/12/elon-musk-trillionaire-spacex.html) · [Bloomberg](https://www.bloomberg.com/news/articles/2026-06-12/elon-musk-hits-1-trillion-net-worth-as-spacex-ipo-breaks-records) · [NPR](https://www.npr.org/2026/06/12/nx-s1-5855004/stock-ai-spacex-ipo-elon-musk)
+- **~$1.05 trillion** (conservative; CBS calc at Friday close was ~$1.14T). Crossed $1T on **June 11, 2026** when the SpaceX IPO priced at $135/share; SPCX opened on Nasdaq June 12 at $150, closed $161.11. Fluctuates with SPCX/TSLA.
+  - [CNBC](https://www.cnbc.com/2026/06/12/elon-musk-trillionaire-spacex.html) · [Bloomberg](https://www.bloomberg.com/news/articles/2026-06-12/elon-musk-hits-1-trillion-net-worth-as-spacex-ipo-breaks-records) · [CBS](https://www.cbsnews.com/news/elon-musk-spacex-ipo-trillionaire-wealth/) · [NPR](https://www.npr.org/2026/06/12/nx-s1-5855004/stock-ai-spacex-ipo-elon-musk)
+
+## Other fortunes (for the "wealth walk")
+- **#2 richest: Larry Page ~$288B** ("more than twice the planet's second-richest person") — [CBS News, Jun 12 2026](https://www.cbsnews.com/news/elon-musk-spacex-ipo-trillionaire-wealth/)
+- Jeff Bezos **~$262B**, Mark Zuckerberg **~$217B** — June 2026 aggregator estimates tracking Forbes/Bloomberg (approximate; [live index](https://www.bloomberg.com/billionaires/))
+- Michael Jordan **$4.3B**, Taylor Swift **$2.0B**, LeBron James **$1.4B** — Forbes 2026 Billionaires List, Mar 2026 ([via](https://www.realitytea.com/2026/03/11/taylor-swift-net-worth-2-billion-estimate-forbes-report/))
+- Rockefeller inflation-adjusted **~$631B** (economy-share method) — [Guinness World Records](https://www.guinnessworldrecords.com/world-records/74539-richest-person-ever-%E2%80%93-adjusted-for-inflation)
+
+## "Feels like" exchange rate
+- Median US family **net worth: $192,700** — [Federal Reserve SCF 2022](https://www.federalreserve.gov/econres/scfindex.htm) (still latest; 2025 SCF results due late 2026)
+- → Ratio: $1.05T ÷ $192,700 = **5,448,884×**. Twitter's $44B ÷ ratio = **$8,075** "felt" price.
+
+## Seconds calibration (pure arithmetic)
+- 1 million s = **11.57 days** · 1 billion s = **31.7 years** · 1 trillion s = **31,688 years** (1e12 ÷ 31,557,600 s/yr). Lascaux cave paintings ≈ 17,000 years old.
+
+## Macro comparisons
+- US nominal GDP **$30.762T** (2025) — [BEA](https://www.bea.gov/news/2026/gdp-third-estimate-industries-corporate-profits-state-gdp-and-state-personal-income-4th) → his wealth ≈ **3.4% of US GDP**
+- Rockefeller peak: $900M in 1913 vs ~$39B GDP ≈ **~2.3%** — [Guinness](https://www.guinnessworldrecords.com/world-records/74539-richest-person-ever-%E2%80%93-adjusted-for-inflation) · [Britannica](https://www.britannica.com/topic/How-Rich-Was-John-D-Rockefeller) → Musk exceeds him by share of economy
+- US gold reserve: **261,498,926 troy oz** (8,133 t; Fort Knox 147.3M oz) — [US Treasury](https://fiscal.treasury.gov/reports-statements/gold-report/) · gold **~$4,216/oz** Jun 12 2026 — [Trading Economics](https://tradingeconomics.com/commodity/gold) → reserve ≈ **$1.10T ≈ his net worth**
+- US physical currency in circulation: **$2,322.9B** (Dec 2024, latest official) — [Fed/USCEP](https://www.uscurrency.gov/life-cycle/data/circulation) → his wealth ≈ **45% of all US cash**
+- World population mid-2026: **~8.30B** — [Worldometer/UN](https://www.worldometers.info/world-population/) → **$126 per human alive**
+- Twitter purchase: **$44B**, closed Oct 27 2022 — [SEC 8-K](https://www.sec.gov/Archives/edgar/data/0001418091/000119312522272772/d411753d8k.htm)
+- Lifetime earnings: median **$1.6M** (HS diploma), $2.8M (bachelor's) — [Georgetown CEW, The College Payoff 2021](https://cew.georgetown.edu/cew-reports/the-college-payoff/)
+
+## Credit
+- Wealth-walk concept inspired by Matt Korostoff, "Wealth, shown to scale" (2020) — original is offline; [archived copy](https://web.archive.org/web/20250221135837/https://mkorostoff.github.io/1-pixel-wealth/)
 
 ## Lifespan math
 - Musk born **June 28, 1971** (age 54). US male life expectancy at birth: **76.5 years** (2024 data) — [CDC/NCHS Data Brief 548, Jan 2026](https://www.cdc.gov/nchs/products/databriefs/db548.htm).
