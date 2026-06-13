@@ -43,20 +43,6 @@ body::before{
 }
 ::selection{background:var(--green);color:var(--paper)}
 
-/* ---------- ticker ---------- */
-.ticker{
-  background:var(--green-deep);color:var(--paper);
-  font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;
-  overflow:hidden;white-space:nowrap;border-bottom:3px double var(--gold);
-  position:sticky;top:0;z-index:40;
-}
-.ticker-track{display:inline-block;padding:.45rem 0;animation:tick 38s linear infinite}
-@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.ticker b{color:var(--mint)}
-.ticker .up{color:var(--mint)}
-.ticker .gold{color:var(--gold-lt)}
-.ticker span{margin:0 1.2rem}
-
 /* ---------- shared ---------- */
 .wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
 section{padding:4.2rem 0;position:relative}
@@ -114,11 +100,6 @@ h2 em{font-style:italic;font-weight:500;color:var(--green)}
 .seal text{font-family:var(--mono);font-size:9.5px;letter-spacing:.22em;fill:var(--red)}
 .seal circle{fill:none;stroke:var(--red);stroke-width:1.5}
 .seal .inner{font-family:var(--serif);font-size:30px;font-style:italic;fill:var(--red)}
-.hero .stamp-note{
-  display:inline-block;margin-top:1rem;padding:.3rem .8rem;
-  border:2px solid var(--red);color:var(--red);transform:rotate(-2deg);
-  font-family:var(--mono);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;
-}
 
 /* ---------- calibration ---------- */
 .cal-grid{display:grid;gap:1rem;grid-template-columns:1fr;margin-top:2.2rem;counter-reset:cal}
@@ -143,12 +124,12 @@ h2 em{font-style:italic;font-weight:500;color:var(--green)}
 .you-box label{font-family:var(--mono);font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--green);display:block;margin-bottom:.6rem}
 .sal-row{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
 .sal-row .cur{font-family:var(--mono);font-weight:700;font-size:1.6rem;color:var(--green-deep)}
-#salary{
+#salary,#netWorth{
   font-family:var(--mono);font-weight:700;font-size:1.6rem;color:var(--green-deep);
   background:transparent;border:none;border-bottom:3px solid var(--green);outline:none;
   width:11ch;font-variant-numeric:tabular-nums;border-radius:0;
 }
-#salary:focus{border-color:var(--red)}
+#salary:focus,#netWorth:focus{border-color:var(--red)}
 .sal-note{font-family:var(--mono);font-size:.65rem;color:#5d6b61;margin-top:.4rem}
 .you-facts{margin-top:1.6rem;display:flex;flex-direction:column;gap:1.1rem}
 .yfact{border-left:3px solid var(--gold);padding-left:1rem}
@@ -157,7 +138,7 @@ h2 em{font-style:italic;font-weight:500;color:var(--green)}
 .race{display:grid;gap:1rem;grid-template-columns:1fr;margin-top:1.8rem}
 @media(min-width:680px){.race{grid-template-columns:1fr 1fr}}
 .race-card{
-  border:2px solid var(--ink);background:var(--paper);padding:1.3rem 1.2rem;text-align:left;
+  border:2px solid var(--ink);background:var(--paper);color:var(--ink);padding:1.3rem 1.2rem;text-align:left;
 }
 .race-card.elon{border-color:var(--green-deep);background:var(--green-deep);color:var(--paper)}
 .race-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;opacity:.85}
@@ -193,58 +174,31 @@ h2 em{font-style:italic;font-weight:500;color:var(--green)}
 .conv-out{margin-top:1.5rem;border-top:1px dashed #8fe0af66;padding-top:1.3rem}
 .conv-feel{font-family:var(--mono);font-weight:700;font-size:clamp(1.7rem,7vw,2.8rem);color:var(--gold-lt);font-variant-numeric:tabular-nums;word-break:break-all}
 .conv-line{font-style:italic;color:var(--mint-dim);margin-top:.5rem;font-size:1rem}
+.conv-rate{font-family:var(--mono);font-weight:700;font-size:clamp(1rem,3.4vw,1.25rem);color:var(--red);margin-top:1.2rem;font-variant-numeric:tabular-nums}
 
-/* ---------- the walk ---------- */
-.walk-section{padding-bottom:5rem}
-.walk-hud{
-  display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;
-  border:2px solid var(--ink);border-bottom:none;background:var(--paper);padding:.7rem 1rem;
-  position:sticky;top:34px;z-index:30;box-shadow:0 -2px 0 var(--paper);
+/* ---------- the to-scale comparison ---------- */
+.scale-box{
+  border:2px solid var(--mint);background:#11432e;box-shadow:8px 8px 0 #00000033;
+  padding:1.6rem 1.4rem 1.9rem;margin-top:2.2rem;
 }
-.walk-pos{font-family:var(--mono);font-weight:700;font-size:clamp(.85rem,3.4vw,1.15rem);color:var(--green-deep);font-variant-numeric:tabular-nums}
-.walk-pct{font-family:var(--mono);font-size:.68rem;color:#5d6b61}
-.walk-btns{display:flex;gap:.5rem}
-.walk-btns button{
-  font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
-  padding:.5rem .7rem;border:2px solid var(--ink);background:var(--paper);cursor:pointer;
-}
-.walk-btns button:hover{background:var(--green);color:var(--paper)}
-.walk-btns button.going{background:var(--red);color:var(--paper);border-color:var(--red)}
-.walk-viewport{
-  overflow-x:auto;overflow-y:hidden;border:2px solid var(--ink);
-  background:var(--green-deep);height:330px;position:relative;
-  -webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;
-}
-.walk-inner{position:relative;height:100%}
-.walk-cash{
-  position:absolute;left:0;right:0;bottom:0;height:84px;
-  background:repeating-linear-gradient(90deg,#1a5c3a 0 26px,#247a4e 26px 52px);
-  border-top:2px solid var(--gold-lt);
-}
-.walk-cash::after{
-  content:"";position:absolute;inset:0;
-  background:repeating-linear-gradient(0deg,transparent 0 12px,#0d3b2755 12px 14px);
-}
-.wtick{position:absolute;bottom:84px;width:1px;height:10px;background:#8fe0af55}
-.wtick span{
-  position:absolute;bottom:12px;left:3px;font-family:var(--mono);font-size:.6rem;color:#8fe0af88;white-space:nowrap;
-}
-.wflag{position:absolute;bottom:84px}
-.wflag .pole{width:2px;background:var(--gold-lt);position:absolute;bottom:0;left:0}
-.wflag .tag{
-  position:absolute;left:0;transform:translateY(-100%);
-  background:var(--paper);color:var(--ink);border:1px solid var(--gold-lt);
-  font-family:var(--mono);font-size:.62rem;padding:.3rem .5rem;white-space:nowrap;line-height:1.45;
-}
-.wflag .tag b{display:block;font-size:.68rem}
-.wflag.you .tag{background:var(--gold-lt);font-weight:700}
-.wend{
-  position:absolute;right:40px;bottom:84px;text-align:right;color:var(--paper);
-  transform:translateY(-110%);
-}
-.wend .we1{font-family:var(--serif);font-style:italic;font-size:1.6rem;color:var(--mint)}
-.wend .we2{font-family:var(--mono);font-weight:700;font-size:1rem;color:var(--gold-lt)}
-.walk-caption{margin-top:1rem}
+.scale-chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.7rem}
+.scale-chips button{font-family:var(--mono);font-size:.66rem;padding:.45rem .7rem;cursor:pointer;background:transparent;border:1px solid #8fe0af88;color:var(--mint-dim);letter-spacing:.04em;transition:all .12s}
+.scale-chips button:hover{background:#1a5c3a;color:var(--paper)}
+.scale-chips button.on{background:var(--mint);color:var(--green-deep);font-weight:700;border-color:var(--mint)}
+.scale-bars{display:flex;flex-direction:column;gap:1.4rem}
+.sbar-top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:.45rem}
+.sbar-name{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--paper)}
+.sbar-amt{font-family:var(--mono);font-weight:700;font-size:.92rem;color:var(--gold-lt);font-variant-numeric:tabular-nums}
+.sbar-track{position:relative;height:32px;background:#0d3b27;border:1px solid #8fe0af44;overflow:hidden}
+.sbar-fill{position:absolute;inset:0 auto 0 0;height:100%;width:0;transition:width .55s cubic-bezier(.2,.7,.2,1)}
+.sbar-fill.elon{background:repeating-linear-gradient(135deg,var(--gold) 0 11px,#8a5f1d 11px 22px);width:100%}
+.sbar-fill.them{background:repeating-linear-gradient(135deg,var(--mint) 0 11px,#3aa46a 11px 22px)}
+.sbar-invisible{font-family:var(--mono);font-size:.64rem;color:#f0b8a8;margin-top:.5rem}
+.scale-verdict{font-family:var(--serif);font-style:italic;font-size:clamp(1.05rem,3vw,1.45rem);color:var(--mint-dim);margin-top:1.8rem;line-height:1.45}
+.scale-verdict b{color:var(--gold-lt);font-style:normal;font-family:var(--mono);font-weight:700}
+.scale-mag{margin-top:1.7rem;border-top:1px dashed #8fe0af44;padding-top:1.3rem}
+.scale-mag-label{font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mint);margin-bottom:.6rem}
+.scale-mag-note{font-family:var(--mono);font-size:.66rem;color:var(--mint-dim);margin-top:.55rem;line-height:1.65}
 
 /* ---------- burn slider ---------- */
 .burn-box{
@@ -273,7 +227,7 @@ input[type=range]::-moz-range-thumb{
 
 /* ---------- cart ---------- */
 .cart-top{
-  position:sticky;top:34px;z-index:30;background:var(--paper);
+  position:sticky;top:0;z-index:30;background:var(--paper);
   border:2px solid var(--ink);box-shadow:0 6px 18px #15241c22;
   padding:.9rem 1.1rem;margin:2rem 0 1.6rem;
 }
@@ -281,7 +235,11 @@ input[type=range]::-moz-range-thumb{
 .cart-spent{font-family:var(--mono);font-weight:700;font-size:clamp(1.05rem,4vw,1.6rem);color:var(--red);font-variant-numeric:tabular-nums}
 .cart-pct{font-family:var(--mono);font-size:.72rem;color:#5d6b61}
 .bar{height:12px;border:2px solid var(--ink);margin-top:.65rem;background:repeating-linear-gradient(135deg,#e7dfc9 0 6px,#efe9d8 6px 12px)}
-.bar i{display:block;height:100%;width:0%;background:var(--red);min-width:0;transition:width .3s ease}
+.bar i{display:block;height:100%;width:0%;background:var(--red);min-width:0;transition:width .35s cubic-bezier(.2,.7,.2,1)}
+.cart-foot{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:.6rem}
+.cart-remain{font-family:var(--mono);font-size:.72rem;color:var(--green-deep);font-variant-numeric:tabular-nums}
+.cart-reset{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:.36rem .65rem;border:2px solid var(--ink);background:var(--paper);cursor:pointer;transition:all .12s}
+.cart-reset:hover{background:var(--red);color:var(--paper);border-color:var(--red)}
 .items{display:grid;gap:.9rem;grid-template-columns:1fr}
 @media(min-width:720px){.items{grid-template-columns:1fr 1fr}}
 @media(min-width:1000px){.items{grid-template-columns:1fr 1fr 1fr}}
@@ -402,25 +360,13 @@ footer details summary{
 </head>
 <body>
 
-<!-- ticker -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track" id="tickerTrack">
-    <span>SPCX <b class="up">161.11 ▲ +19.3%</b></span><span>·</span>
-    <span class="gold">★ FIRST TRILLIONAIRE IN HUMAN HISTORY ★</span><span>·</span>
-    <span>NET WORTH <b>≈ $1,050,000,000,000</b></span><span>·</span>
-    <span>MORE THAN 2× THE WORLD'S SECOND-RICHEST PERSON</span><span>·</span>
-    <span>RICHER THAN ROCKEFELLER <b>(SHARE OF US ECONOMY)</b></span><span>·</span>
-    <span>JUNE 11, 2026 — THE DAY THE COMMA COUNT CHANGED</span><span>·</span>
-  </div>
-</div>
-
 <!-- hero -->
 <header class="hero">
   <div class="wrap">
-    <p class="hero-kicker">Ledger of Record · Issued June 12, 2026</p>
+    <p class="hero-kicker">June 11, 2026 · The first trillionaire</p>
     <h1>One man.<br><span class="it">One trillion</span> dollars.</h1>
     <div class="big-number num" id="bigNumber">$0</div>
-    <p class="hero-sub">On June 11, 2026, the SpaceX IPO made Elon Musk the first trillionaire in history —<br>worth more than twice the world's second-richest person.<br>This page is an attempt to understand that number. It will not succeed.</p>
+    <p class="hero-sub">The SpaceX IPO just made Elon Musk the richest person in history.<br>This page is an attempt to picture that number.</p>
     <div class="seal" aria-hidden="true">
       <svg viewBox="0 0 120 120">
         <defs><path id="circ" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
@@ -430,7 +376,6 @@ footer details summary{
         <text class="inner" x="60" y="70" text-anchor="middle">$1T</text>
       </svg>
     </div>
-    <div><span class="stamp-note">certified incomprehensible</span></div>
   </div>
 </header>
 
@@ -441,20 +386,20 @@ footer details summary{
   <div class="wrap reveal">
     <p class="entry-tag">Chapter 01 · Calibration</p>
     <h2>First, your brain needs <em>recalibrating.</em></h2>
-    <p class="lede">"Million," "billion," and "trillion" rhyme, so your brain files them next to each other. They are not next to each other. Count one dollar per second, around the clock:</p>
+    <p class="lede">"Million," "billion," and "trillion" rhyme, so your brain files them next to each other. They are not next to each other. Here's a way to feel the gap: <b>imagine counting one dollar every second</b> — no sleep, no breaks, all day and all night. How long to count each fortune?</p>
     <div class="cal-grid">
       <div class="cal-card">
-        <p class="cal-q">$1 million takes</p>
+        <p class="cal-q">$1 million, at $1/sec</p>
         <p class="cal-n num">11.6 days</p>
         <p class="cal-t">Annoying, but you'd live.</p>
       </div>
       <div class="cal-card">
-        <p class="cal-q">$1 billion takes</p>
+        <p class="cal-q">$1 billion, at $1/sec</p>
         <p class="cal-n num">31.7 years</p>
         <p class="cal-t">Start at college graduation, finish in your mid-fifties.</p>
       </div>
       <div class="cal-card blow">
-        <p class="cal-q">$1 trillion takes</p>
+        <p class="cal-q">$1 trillion, at $1/sec</p>
         <p class="cal-n num">31,688 years</p>
         <p class="cal-t">You'd have needed to start during the Ice Age — fourteen millennia before the cave paintings at Lascaux.</p>
       </div>
@@ -500,7 +445,13 @@ footer details summary{
   <div class="wrap reveal">
     <p class="entry-tag">Chapter 03 · The exchange rate</p>
     <h2>What money <em>feels like</em> to him.</h2>
-    <p class="lede">Elon's fortune is 5.4 million times the median American family's net worth ($192,700). That ratio is an exchange rate between his world and yours. Convert anything:</p>
+    <p class="lede">A purchase only stings in proportion to what you have. So tell us your net worth — everything you own, minus what you owe — and we'll work out the exchange rate between his world and yours.</p>
+    <div class="you-box">
+      <label for="netWorth">Your net worth</label>
+      <div class="sal-row"><span class="cur">$</span><input id="netWorth" type="text" inputmode="numeric" value="192,700" autocomplete="off"></div>
+      <p class="sal-note">Pre-filled with the median US family ($192,700, Federal Reserve SCF). Change it to yours.</p>
+      <p class="conv-rate" id="convRate">—</p>
+    </div>
     <div class="conv-box">
       <div class="conv-flip" role="tablist">
         <button id="dirHim" class="on">He spends it</button>
@@ -513,41 +464,37 @@ footer details summary{
         <p class="conv-line" id="convLine">—</p>
       </div>
     </div>
-    <p class="fine">Exchange rate: $1.05T ÷ $192,700 (median family net worth, Federal Reserve SCF) = 5,448,884. Yes — when he bought Twitter for $44 billion, it felt like $8,075. A used motorcycle.</p>
+    <p class="fine" id="convFine">—</p>
   </div>
 </section>
 
-<!-- 04 the walk -->
-<section class="walk-section">
+<!-- 04 to scale -->
+<section class="zoom-section">
   <div class="wrap reveal">
-    <p class="entry-tag">Chapter 04 · The walk</p>
-    <h2>Now <em>walk</em> to the end of his money.</h2>
-    <p class="lede">This green strip is Elon's fortune, drawn to scale: every pixel is $10,000,000. The flags mark where other people's entire fortunes run out. Scroll right. Keep scrolling.</p>
-  </div>
-  <div class="wrap">
-    <div class="walk-hud">
-      <div>
-        <p class="walk-pos num" id="walkPos">$0</p>
-        <p class="walk-pct num" id="walkPct">0% of the way there</p>
-      </div>
-      <div class="walk-btns">
-        <button id="walkAuto">▶ Auto-walk</button>
-        <button id="walkEnd">Teleport to end ⇥</button>
-      </div>
-    </div>
-    <div class="walk-viewport" id="walkVp">
-      <div class="walk-inner" id="walkInner">
-        <div class="walk-cash"></div>
-        <div class="wend">
-          <p class="we1">The end.</p>
-          <p class="we2">$1,050,000,000,000</p>
+    <p class="entry-tag">Chapter 04 · To scale</p>
+    <h2>Now go <em>looking</em> for the rest of us.</h2>
+    <p class="lede">The gold bar is Elon's entire fortune. Pick anyone else, and their whole net worth — every dollar they own — is drawn beneath it on exactly the same scale. The richer they are, the more of the bar they fill. Almost nobody fills any of it.</p>
+    <div class="scale-box">
+      <div class="scale-chips" id="scaleChips"></div>
+      <div class="scale-bars">
+        <div>
+          <div class="sbar-top"><span class="sbar-name">Elon Musk</span><span class="sbar-amt">$1.05T</span></div>
+          <div class="sbar-track"><div class="sbar-fill elon"></div></div>
+        </div>
+        <div>
+          <div class="sbar-top"><span class="sbar-name" id="pName">—</span><span class="sbar-amt" id="pAmt">—</span></div>
+          <div class="sbar-track"><div class="sbar-fill them" id="pFill"></div></div>
+          <p class="sbar-invisible" id="pInvis">⤺ Their entire fortune is the sliver at the far left — too thin to draw even one pixel here.</p>
         </div>
       </div>
+      <p class="scale-verdict" id="scaleVerdict">—</p>
+      <div class="scale-mag">
+        <p class="scale-mag-label">🔍 The same fortune, magnified until you can see it</p>
+        <div class="sbar-track"><div class="sbar-fill them" id="magFill" style="width:60%"></div></div>
+        <p class="scale-mag-note" id="magNote">—</p>
+      </div>
     </div>
-    <div class="walk-caption">
-      <p class="lede" style="font-size:1rem">The flag for a <b>median American family</b> ($192,700) is there too — it's just 1/50th of a pixel wide, so you'll never see it. Even <b>Larry Page</b>, the second-richest person alive, runs out of money 27% of the way in. The last three-quarters of the strip belongs to territory <em>no other human has ever entered.</em></p>
-      <p class="fine">Net worths: Forbes/Bloomberg-derived estimates, June 2026 (celebrities: Forbes 2026 list, March 2026). Auto-walk travels at $15 billion per second — and still takes over a minute. Inspired by Matt Korostoff's "Wealth, shown to scale" (2020).</p>
-    </div>
+    <p class="fine">Net worths: Bloomberg/Forbes estimates, June 2026 (celebrities: Forbes 2026 list). Drawn honestly to scale, the gap between a median US family and Elon is about 5.4 million to one. Inspired by Matt Korostoff's "Wealth, shown to scale" (2020).</p>
   </div>
 </section>
 
@@ -558,7 +505,7 @@ footer details summary{
   <div class="wrap reveal">
     <p class="entry-tag">Chapter 05 · Interactive</p>
     <h2>Fine. Try to <em>spend it.</em></h2>
-    <p class="lede">Everything priced from real 2026 figures. Tap MAX on anything. See if you can make the red bar visible.</p>
+    <p class="lede">Everything priced from real 2026 figures. Add a few, then hit MAX — each MAX is a believable shopping spree, not a magic "buy everything" button. See how many sprees it takes to even dent the red bar.</p>
 
     <div class="cart-top">
       <div class="row">
@@ -566,6 +513,10 @@ footer details summary{
         <span class="cart-pct num" id="cartPct">0.000000% of his fortune</span>
       </div>
       <div class="bar"><i id="cartBar"></i></div>
+      <div class="cart-foot">
+        <span class="cart-remain num" id="cartRemain">$1,050,000,000,000 still left</span>
+        <button id="cartReset" class="cart-reset">Reset cart</button>
+      </div>
     </div>
 
     <div class="items" id="items"></div>
@@ -591,7 +542,7 @@ footer details summary{
     <p class="lede">Elon is 54. US male life expectancy is 76.5. Pick a daily spending habit and see how long the pile lasts.</p>
     <div class="burn-box">
       <p class="burn-rate num"><span id="burnRate">$1,000,000</span><small> / day</small></p>
-      <input type="range" id="burnSlider" min="0" max="4" step="1" value="2" aria-label="Daily spending amount">
+      <input type="range" id="burnSlider" min="0" max="1000" step="1" value="485" aria-label="Daily spending amount">
       <div class="burn-scale"><span>$10K</span><span>$100K</span><span>$1M</span><span>$10M</span><span>$134M</span></div>
       <div class="burn-result">
         <p class="burn-years num" id="burnYears">2,874 years</p>
@@ -665,21 +616,20 @@ footer details summary{
     <details>
       <summary>Sources (tap to expand)</summary>
       <ul class="sources">
-        <li>Net worth &amp; trillionaire date — CNBC, Bloomberg, CBS, NPR · June 11–12, 2026</li>
-        <li>#2 richest: Larry Page ~$288B — CBS News, June 12, 2026</li>
-        <li>Celebrity net worths — Forbes 2026 Billionaires List (March 2026)</li>
-        <li>Median family net worth $192,700 — Federal Reserve SCF 2022 (latest)</li>
-        <li>Median worker $64,220/yr — BLS usual weekly earnings, Q1 2026</li>
-        <li>Life expectancy 76.5 yrs — CDC/NCHS Data Brief 548, Jan 2026</li>
-        <li>US GDP $30.76T (2025) — BEA · Rockefeller ~2.3% of 1913 GDP — Guinness World Records</li>
-        <li>US gold reserve 261.5M oz — US Treasury · gold ~$4,216/oz, June 12, 2026</li>
-        <li>Currency in circulation $2.32T — Federal Reserve, Dec 2024</li>
-        <li>World population 8.3B — UN/Worldometer mid-2026</li>
-        <li>Lifetime earnings — Georgetown CEW, "The College Payoff" (2021)</li>
-        <li>Twitter $44B — SEC 8-K, Oct 2022</li>
-        <li>Cart prices — Edmunds, NAR, Big Mac Index, eMarketer, CNBC, IMF, WFP (see reference.md)</li>
-        <li>Bill dimensions — Bureau of Engraving &amp; Printing</li>
-        <li>Inspired by Matt Korostoff's <a href="https://web.archive.org/web/20250221135837/https://mkorostoff.github.io/1-pixel-wealth/">"Wealth, shown to scale"</a> (2020, archived)</li>
+        <li>Net worth &amp; #2-richest (Larry Page) — <a href="https://www.bloomberg.com/billionaires/" target="_blank" rel="noopener">Bloomberg Billionaires Index</a> · <a href="https://www.forbes.com/profile/elon-musk/" target="_blank" rel="noopener">Forbes profile</a></li>
+        <li>Celebrity net worths — <a href="https://www.forbes.com/real-time-billionaires/" target="_blank" rel="noopener">Forbes Real-Time Billionaires</a></li>
+        <li>Median family net worth $192,700 — <a href="https://www.federalreserve.gov/econres/scfindex.htm" target="_blank" rel="noopener">Federal Reserve Survey of Consumer Finances</a></li>
+        <li>Median worker $64,220/yr — <a href="https://www.bls.gov/news.release/wkyeng.htm" target="_blank" rel="noopener">BLS usual weekly earnings</a></li>
+        <li>Life expectancy 76.5 yrs — <a href="https://www.cdc.gov/nchs/fastats/life-expectancy.htm" target="_blank" rel="noopener">CDC / NCHS</a></li>
+        <li>US GDP — <a href="https://www.bea.gov/data/gdp/gross-domestic-product" target="_blank" rel="noopener">BEA</a> · Rockefeller ~2.3% of 1913 GDP — Guinness World Records</li>
+        <li>US gold reserve 261.5M oz — <a href="https://fiscaldata.treasury.gov/datasets/status-report-government-gold-reserve/" target="_blank" rel="noopener">US Treasury Fiscal Data</a></li>
+        <li>Currency in circulation $2.32T — <a href="https://www.federalreserve.gov/paymentsystems/coin_currcircvolume.htm" target="_blank" rel="noopener">Federal Reserve</a></li>
+        <li>World population 8.3B — <a href="https://www.worldometers.info/world-population/" target="_blank" rel="noopener">UN / Worldometer</a></li>
+        <li>Lifetime earnings — <a href="https://cew.georgetown.edu/cew-reports/the-college-payoff/" target="_blank" rel="noopener">Georgetown CEW, "The College Payoff"</a></li>
+        <li>Twitter $44B — <a href="https://en.wikipedia.org/wiki/Acquisition_of_Twitter_by_Elon_Musk" target="_blank" rel="noopener">Acquisition of Twitter by Elon Musk</a> (Oct 2022)</li>
+        <li>Big Mac price — <a href="https://www.economist.com/big-mac-index" target="_blank" rel="noopener">The Economist Big Mac Index</a> · other cart prices in <a href="reference.md">reference.md</a></li>
+        <li>$100 bill dimensions — <a href="https://www.bep.gov/currency/u-s-currency" target="_blank" rel="noopener">Bureau of Engraving &amp; Printing</a></li>
+        <li>Inspired by Matt Korostoff's <a href="https://web.archive.org/web/20250221135837/https://mkorostoff.github.io/1-pixel-wealth/" target="_blank" rel="noopener">"Wealth, shown to scale"</a> (2020, archived)</li>
         <li>Full citations: <a href="reference.md">reference.md</a></li>
       </ul>
     </details>
@@ -689,7 +639,6 @@ footer details summary{
 
 <script>
 const FORTUNE = 1.05e12;
-const RATIO = FORTUNE / 192700;            // his wealth ÷ median family net worth
 const INTEREST_PS = FORTUNE * 0.05 / 31557600; // $/sec at 5% APR
 const fmt = n => '$' + Math.round(n).toLocaleString('en-US');
 const fmtQty = n => {
@@ -703,10 +652,6 @@ const groupInput = el => {
   const v = parseAmt(el.value);
   el.value = v ? Math.round(v).toLocaleString('en-US') : '';
 };
-
-/* duplicate ticker for seamless loop */
-const tt = document.getElementById('tickerTrack');
-tt.innerHTML += tt.innerHTML;
 
 /* hero count-up */
 (() => {
@@ -760,8 +705,11 @@ tt.innerHTML += tt.innerHTML;
   }, 50);
 })();
 
-/* ---- chapter 03: feels-like converter ---- */
+/* ---- chapter 03: feels-like converter (driven by your net worth) ---- */
 (() => {
+  const nwEl = document.getElementById('netWorth');
+  const rateEl = document.getElementById('convRate');
+  const fineEl = document.getElementById('convFine');
   const amtEl = document.getElementById('convAmt');
   const feelEl = document.getElementById('convFeel');
   const lineEl = document.getElementById('convLine');
@@ -769,6 +717,7 @@ tt.innerHTML += tt.innerHTML;
   const bYou = document.getElementById('dirYou');
   const chipsEl = document.getElementById('chips');
   let dir = 'him';
+  let ratio = FORTUNE / 192700;   // recomputed from the net-worth input
 
   const PRESETS = {
     him: [
@@ -783,39 +732,49 @@ tt.innerHTML += tt.innerHTML;
       ['Monthly rent — $1,800', 1800],
       ['New car — $36,990', 36990],
       ['Median home — $429,300', 429300],
-      ['Your whole net worth — $192,700', 192700]
+      ['A 1-week vacation — $2,500', 2500]
     ]
   };
 
   function feelLine(v, direction){
     if (direction === 'him'){
-      if (v < 0.01) return 'A fraction of a penny. He has, in every sense that matters, paid nothing.';
+      if (v < 0.01) return 'A fraction of a penny. To him, in every sense that matters, this is free.';
       if (v < 1)    return 'Loose change. The kind you don’t bend down for.';
       if (v < 25)   return 'A fast-food run. No receipt necessary.';
       if (v < 200)  return 'A tank of gas and some snacks.';
       if (v < 2000) return 'A nice night out. Forgotten by morning.';
-      if (v < 20000)return 'A used motorcycle. A solid purchase, worth a think.';
-      return 'Actual money — even to him. Almost.';
+      if (v < 20000)return 'A used motorcycle. Worth a moment’s thought.';
+      return 'Actual money — even at his scale. Almost.';
     } else {
-      if (v < 1e6)  return 'Barely registers on his ledger.';
-      if (v < 1e9)  return 'Your spending, at his scale, is measured in millions.';
-      if (v < 1e12) return 'At his scale, your purchase is a billion-dollar decision.';
-      return 'At his scale, this purchase costs MORE than his entire fortune. A median family buying a median home commits proportionally more than everything he has.';
+      if (v < 1e6)  return 'At his scale, this barely registers on the ledger.';
+      if (v < 1e9)  return 'At his scale, your everyday purchase is measured in millions.';
+      if (v < 1e12) return 'At his scale, this is a billion-dollar decision.';
+      return 'At his scale, this would cost MORE than his entire fortune — which is exactly how outrageous a normal big purchase is, relative to what you have.';
     }
   }
 
   function render(){
     const amt = parseAmt(amtEl.value);
-    if (!amt){ feelEl.textContent = '—'; lineEl.textContent = 'Enter an amount.'; return; }
+    if (!amt){ feelEl.textContent = '—'; lineEl.textContent = 'Enter an amount above.'; return; }
     if (dir === 'him'){
-      const v = amt / RATIO;
+      const v = amt / ratio;
       feelEl.textContent = v < 0.01 ? '$' + v.toFixed(5) : '$' + v.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
-      lineEl.textContent = 'is what that feels like to him, scaled to a median family’s net worth. ' + feelLine(v,'him');
+      lineEl.textContent = 'is what spending that feels like to him, scaled to your net worth. ' + feelLine(v,'him');
     } else {
-      const v = amt * RATIO;
+      const v = amt * ratio;
       feelEl.textContent = fmt(v);
-      lineEl.textContent = 'is the equivalent purchase at his scale. ' + feelLine(v,'you');
+      lineEl.textContent = 'is the equivalent hit, if your wallet were his. ' + feelLine(v,'you');
     }
+  }
+
+  function updateRate(){
+    const nw = parseAmt(nwEl.value) || 192700;
+    ratio = FORTUNE / nw;
+    rateEl.textContent = 'He has ' + Math.round(ratio).toLocaleString('en-US') + '× your net worth.';
+    const twitterFeel = 44e9 / ratio;
+    fineEl.textContent = 'Exchange rate: $1.05T ÷ your ' + fmt(nw) + ' = ' + Math.round(ratio).toLocaleString('en-US') +
+      '×. At that rate, his $44B Twitter buy felt like ' + fmt(twitterFeel) + ' to him.';
+    render();
   }
 
   function setDir(d){
@@ -832,100 +791,102 @@ tt.innerHTML += tt.innerHTML;
     amtEl.value = PRESETS[d][0][1].toLocaleString('en-US');
     render();
   }
+  nwEl.addEventListener('input', updateRate);
+  nwEl.addEventListener('blur', () => { groupInput(nwEl); updateRate(); });
   bHim.addEventListener('click', () => setDir('him'));
   bYou.addEventListener('click', () => setDir('you'));
   amtEl.addEventListener('input', render);
   amtEl.addEventListener('blur', () => { groupInput(amtEl); render(); });
   setDir('him');
+  updateRate();
 })();
 
-/* ---- chapter 04: the walk ---- */
+/* ---- chapter 04: to-scale comparison ---- */
 (() => {
-  const PX = 1e7;                       // $ per pixel
-  const W = Math.round(FORTUNE / PX);   // 105,000 px
-  const vp = document.getElementById('walkVp');
-  const inner = document.getElementById('walkInner');
-  inner.style.width = W + 'px';
-
-  const FLAGS = [
-    {x:0,        h:150, name:'START — almost all of humanity', amt:'$0–$1M', you:true},
-    {x:140,      h:96,  name:'LeBron James', amt:'$1.4B'},
-    {x:200,      h:170, name:'Taylor Swift', amt:'$2.0B'},
-    {x:430,      h:120, name:'Michael Jordan', amt:'$4.3B'},
-    {x:21700,    h:120, name:'Mark Zuckerberg', amt:'$217B'},
-    {x:26200,    h:170, name:'Jeff Bezos', amt:'$262B'},
-    {x:28800,    h:110, name:'Larry Page — 2nd richest human', amt:'$288B', you:true},
-    {x:63100,    h:130, name:'Rockefeller, inflation-adjusted', amt:'~$631B'}
+  const PEOPLE = [
+    {name:'Larry Page', short:'Larry Page', v:288e9, tag:'#2 richest alive'},
+    {name:'Jeff Bezos', short:'Jeff Bezos', v:262e9},
+    {name:'Mark Zuckerberg', short:'Zuckerberg', v:217e9},
+    {name:'Michael Jordan', short:'Michael Jordan', v:4.3e9},
+    {name:'Taylor Swift', short:'Taylor Swift', v:2.0e9},
+    {name:'LeBron James', short:'LeBron James', v:1.4e9},
+    {name:'A median US family', short:'A median family', v:192700}
   ];
-  FLAGS.forEach(f => {
-    const el = document.createElement('div');
-    el.className = 'wflag' + (f.you ? ' you' : '');
-    el.style.left = f.x + 'px';
-    el.innerHTML = `<div class="pole" style="height:${f.h}px"></div><div class="tag" style="bottom:${f.h}px"><b>${f.name}</b>${f.amt}</div>`;
-    inner.appendChild(el);
-  });
-  /* $100B mile-markers */
-  for (let b = 1; b <= 10; b++){
-    const t = document.createElement('div');
-    t.className = 'wtick';
-    t.style.left = (b * 10000) + 'px';
-    t.innerHTML = `<span>$${b*100} billion</span>`;
-    inner.appendChild(t);
+  const chipsEl = document.getElementById('scaleChips');
+  const pName = document.getElementById('pName');
+  const pAmt = document.getElementById('pAmt');
+  const pFill = document.getElementById('pFill');
+  const pInvis = document.getElementById('pInvis');
+  const verdict = document.getElementById('scaleVerdict');
+  const magNote = document.getElementById('magNote');
+  let sel = 0;
+
+  function fmtAmt(v){
+    if (v >= 1e12) return '$' + (v/1e12).toFixed(2) + 'T';
+    if (v >= 1e9)  return '$' + (v/1e9).toFixed(v >= 1e11 ? 0 : 1) + 'B';
+    if (v >= 1e6)  return '$' + (v/1e6).toFixed(0) + 'M';
+    return '$' + Math.round(v).toLocaleString('en-US');
+  }
+  function fmtCount(n){
+    if (n < 10)  return n.toFixed(1);
+    if (n < 1e3) return Math.round(n).toLocaleString('en-US');
+    if (n < 1e6) return Math.round(n/1e3) + ' thousand';
+    if (n < 1e9) return (n/1e6).toFixed(1) + ' million';
+    return (n/1e9).toFixed(1) + ' billion';
+  }
+  function fmtPct(p){
+    if (p >= 1)      return p.toFixed(1) + '%';
+    if (p >= 0.01)   return p.toFixed(2) + '%';
+    if (p >= 0.0001) return p.toFixed(4) + '%';
+    return 'under 0.0001%';
+  }
+  function fmtMag(m){
+    if (m < 10) return m.toFixed(1) + '×';
+    return Math.round(m).toLocaleString('en-US') + '×';
   }
 
-  const pos = document.getElementById('walkPos');
-  const pct = document.getElementById('walkPct');
-  function hud(){
-    const v = Math.min(FORTUNE, (vp.scrollLeft + vp.clientWidth) * PX);
-    pos.textContent = fmt(v);
-    pct.textContent = (v/FORTUNE*100).toFixed(1) + '% of the way there';
-  }
-  vp.addEventListener('scroll', hud, {passive:true});
-  hud();
+  PEOPLE.forEach((p, i) => {
+    const b = document.createElement('button');
+    b.textContent = p.short;
+    b.addEventListener('click', () => { sel = i; render(); });
+    chipsEl.appendChild(b);
+  });
 
-  /* auto-walk */
-  const autoBtn = document.getElementById('walkAuto');
-  let going = false, raf = null, last = 0;
-  function stepWalk(t){
-    if (!going) return;
-    if (last) vp.scrollLeft += (t - last) * 1.5;   // 1500 px/s = $15B/s
-    last = t;
-    if (vp.scrollLeft + vp.clientWidth >= W - 2) stop();
-    else raf = requestAnimationFrame(stepWalk);
+  function render(){
+    const p = PEOPLE[sel];
+    const pct = p.v / FORTUNE * 100;
+    pName.textContent = p.name + (p.tag ? ' · ' + p.tag : '');
+    pAmt.textContent = fmtAmt(p.v);
+    pFill.style.width = pct + '%';
+    pInvis.style.display = pct < 0.05 ? 'block' : 'none';
+
+    const count = FORTUNE / p.v;
+    verdict.innerHTML = 'Their entire net worth is <b>' + fmtPct(pct) + '</b> of his. '
+      + 'It would take <b>' + fmtCount(count) + '</b> of them, side by side, to equal one Elon Musk.';
+
+    const M = 60 / pct;     // zoom that would draw their bar at 60% of the width
+    magNote.textContent = (pct < 0.05 ? 'At true scale their bar is invisible. ' : '')
+      + 'Shown here magnified ' + fmtMag(M) + '. At that zoom, Elon’s gold bar above would run '
+      + fmtMag(M) + ' past the edge of your screen.';
+
+    [...chipsEl.children].forEach((c, i) => c.classList.toggle('on', i === sel));
   }
-  function stop(){
-    going = false; last = 0;
-    if (raf) cancelAnimationFrame(raf);
-    autoBtn.textContent = '▶ Auto-walk';
-    autoBtn.classList.remove('going');
-  }
-  autoBtn.addEventListener('click', () => {
-    if (going) return stop();
-    going = true;
-    autoBtn.textContent = '⏸ $15B / second';
-    autoBtn.classList.add('going');
-    raf = requestAnimationFrame(stepWalk);
-  });
-  vp.addEventListener('pointerdown', stop, {passive:true});
-  vp.addEventListener('wheel', stop, {passive:true});
-  document.getElementById('walkEnd').addEventListener('click', () => {
-    stop(); vp.scrollLeft = W;
-  });
+  render();
 })();
 
 /* ---- chapter 05: cart ---- */
 (() => {
   const ITEMS = [
-    {e:'🍔', n:'Big Mac', p:6.12, src:'Economist Big Mac Index, Jan 2026'},
-    {e:'🚗', n:'Tesla Model 3', p:36990, src:'Edmunds, 2026 model year'},
-    {e:'🏠', n:'Median American home', p:429300, src:'NAR, May 2026'},
-    {e:'📺', n:'Super Bowl ad (30 sec)', p:8e6, src:'Super Bowl LX, Feb 2026'},
-    {e:'✈️', n:'Gulfstream G700', p:8e7, src:'industry est. — no public list price'},
-    {e:'🏀', n:'NBA franchise (league avg)', p:5.52e9, src:'CNBC valuations, Feb 2026'},
-    {e:'🚀', n:'NASA, one entire year', p:24.438e9, src:'FY2026 enacted budget'},
-    {e:'🇮🇸', n:"Iceland's annual GDP", p:35.4e9, src:'IMF, 2025'},
-    {e:'🌾', n:'End world hunger (1 year)', p:4e10, src:'WFP/UN figure, $40B/yr'},
-    {e:'🐦', n:'Buy Twitter… again', p:44e9, src:'what he actually paid, Oct 2022'}
+    {e:'🍔', n:'Big Mac', p:6.12, cap:20e9, src:'Economist Big Mac Index, Jan 2026'},
+    {e:'🚗', n:'Tesla Model 3', p:36990, cap:3e6, src:'Edmunds, 2026 model year'},
+    {e:'🏠', n:'Median American home', p:429300, cap:25e4, src:'NAR, May 2026'},
+    {e:'📺', n:'Super Bowl ad (30 sec)', p:8e6, cap:1e4, src:'Super Bowl LX, Feb 2026'},
+    {e:'✈️', n:'Gulfstream G700', p:8e7, cap:1e3, src:'industry est. — no public list price'},
+    {e:'🏀', n:'NBA franchise (league avg)', p:5.52e9, cap:20, src:'CNBC valuations, Feb 2026'},
+    {e:'🚀', n:'NASA, one entire year', p:24.438e9, cap:4, src:'FY2026 enacted budget'},
+    {e:'🇮🇸', n:"Iceland's annual GDP", p:35.4e9, cap:3, src:'IMF, 2025'},
+    {e:'🌾', n:'End world hunger (1 year)', p:4e10, cap:3, src:'WFP/UN figure, $40B/yr'},
+    {e:'🐦', n:'Buy Twitter… again', p:44e9, cap:3, src:'what he actually paid, Oct 2022'}
   ];
   const qty = new Array(ITEMS.length).fill(0);
   const itemsEl = document.getElementById('items');
@@ -953,6 +914,7 @@ tt.innerHTML += tt.innerHTML;
   const spentEl = document.getElementById('cartSpent');
   const pctEl = document.getElementById('cartPct');
   const barEl = document.getElementById('cartBar');
+  const remainEl = document.getElementById('cartRemain');
   const rLines = document.getElementById('receiptLines');
   const rTotal = document.getElementById('rTotal');
   const rRemain = document.getElementById('rRemain');
@@ -975,6 +937,7 @@ tt.innerHTML += tt.innerHTML;
     const pct = t / FORTUNE * 100;
     pctEl.textContent = pct.toFixed(6) + '% of his fortune';
     barEl.style.width = Math.min(100, pct) + '%';
+    remainEl.textContent = fmt(Math.max(0, FORTUNE - t)) + ' still left';
     ITEMS.forEach((_,i)=> document.getElementById('q'+i).textContent = fmtQty(qty[i]));
     const bought = ITEMS.map((it,i)=>({it,q:qty[i]})).filter(x=>x.q>0);
     rLines.innerHTML = bought.length
@@ -990,13 +953,20 @@ tt.innerHTML += tt.innerHTML;
     if (!b) return;
     const i = +b.dataset.i, it = ITEMS[i];
     if (b.dataset.d === 'max'){
-      const remaining = FORTUNE - total();
-      qty[i] += Math.max(0, Math.floor(remaining / it.p));
+      // a believable spree: add up to this item's cap, bounded by what's left
+      const affordable = Math.floor((FORTUNE - total()) / it.p);
+      const room = it.cap - qty[i];
+      qty[i] += Math.max(0, Math.min(room, affordable));
     } else {
       const d = +b.dataset.d;
-      if (d > 0 && total() + it.p > FORTUNE) return;
+      if (d > 0 && (qty[i] >= it.cap || total() + it.p > FORTUNE)) return;
       qty[i] = Math.max(0, qty[i] + d);
     }
+    render();
+  });
+
+  document.getElementById('cartReset').addEventListener('click', () => {
+    qty.fill(0);
     render();
   });
   render();
@@ -1004,25 +974,38 @@ tt.innerHTML += tt.innerHTML;
 
 /* ---- chapter 06: burn slider ---- */
 (() => {
-  const stops = [
-    {rate:1e4,  line:'287,000 years. You start spending before Homo sapiens exists. You are still rich.'},
-    {rate:1e5,  line:'28,700 years. The cave paintings at Lascaux are newer than your spending spree.'},
-    {rate:1e6,  line:'2,875 years. Begin before the founding of Rome. Outlive the empire. Still rich.'},
-    {rate:1e7,  line:'287 years. Start in 1739 — before the United States — and run out next century.'},
-    {rate:1.34e8, line:'21.5 years. The only setting that works: he dies broke at exactly 76.5, the average American male lifespan. It requires spending $93,000 per minute, while asleep.'}
-  ];
+  const MIN = 1e4, MAX = 1.34e8;
+  const LR = Math.log10(MAX / MIN);          // log span between the endpoints
   const slider = document.getElementById('burnSlider');
   const rateEl = document.getElementById('burnRate');
   const yearsEl = document.getElementById('burnYears');
   const lineEl = document.getElementById('burnLine');
+
+  /* round to 3 significant figures so the live number reads cleanly */
+  function niceRate(r){
+    const mag = Math.pow(10, Math.floor(Math.log10(r)) - 2);
+    return Math.round(r / mag) * mag;
+  }
+  function line(years, rate){
+    if (rate >= MAX - 1) return 'The only setting that truly works: he dies broke at ~76.5 — the average American male lifespan — by spending $93,000 every minute, awake or asleep.';
+    if (years >= 1e5)    return 'You start spending before Homo sapiens exists — and still never run out.';
+    if (years >= 2e4)    return 'Whole civilizations rise and fall while the pile drains. You outlast them all.';
+    if (years >= 5e3)    return 'Begin in the last Ice Age; finish somewhere in the far future.';
+    if (years >= 2e3)    return 'Begin before the founding of Rome. Outlive the empire. Still rich.';
+    if (years >= 5e2)    return 'Start under the Roman Republic and only now run dry.';
+    if (years >= 150)    return 'Start before the United States existed, and run out next century.';
+    if (years >= 40)     return 'The money comfortably outlives your great-grandchildren.';
+    return 'Closer — but at 54 he still dies decades early, with the pile not yet empty.';
+  }
   function update(){
-    const s = stops[slider.value];
-    const years = FORTUNE / s.rate / 365.25;
-    rateEl.textContent = fmt(s.rate);
+    const t = slider.value / 1000;
+    const rate = niceRate(MIN * Math.pow(10, LR * t));
+    const years = FORTUNE / rate / 365.25;
+    rateEl.textContent = fmt(rate);
     yearsEl.textContent = years >= 1000
       ? Math.round(years).toLocaleString('en-US') + ' years'
       : years.toFixed(1) + ' years';
-    lineEl.textContent = s.line;
+    lineEl.textContent = line(years, rate);
   }
   slider.addEventListener('input', update);
   update();
